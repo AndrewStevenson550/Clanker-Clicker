@@ -33,13 +33,14 @@ clear.addEventListener("click", function(){
 
 //code stuff (the clicker)
 
-let autoInterval = null; // keep track of the timer so it doesn't restart
+let autoInterval = null; // holds the timer ID
 code.addEventListener("click", () => {
+  // Only start if we haven't already started
   if (autoInterval === null) {
     autoInterval = setInterval(() => {
-      clicks++; // add 1 automatically
-      money.textContent = clicks; // update display
-      localStorage.setItem("clicks", clicks); // save progress
-    }, 2000); // 2000 ms = 2 seconds
+      clicks++;
+      money.textContent = clicks;
+      localStorage.setItem("clicks", clicks);
+    }, 2000);
   }
 });
