@@ -1,0 +1,25 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    
+    
+}
+
+.clanker{
+    background-color:antiquewhite;
+    border-radius: 15px;
+    height:325px;
+
+
+    
+}
+
+.title{
+    text-align: center;
+}
+
+#money{
+    text-align: center;
+}
