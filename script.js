@@ -1,41 +1,27 @@
-const clanker_id = document.getElementById("clanker");
-const money_id = document.getElementById("money");
-const clear = document.getElementById("button-clear");
-const code = document.getElementById("code")
+// --- Get references ---
+const clanker = document.getElementById("clanker"); // Image/button for +1
+const code = document.getElementById("code");       // Image/button for auto
+const money = document.getElementById("money");   
+const clear_button = document.getElementById("button-clear")
+// Score display
 
+// --- Load saved clicks safely ---
+let clicks = parseInt(localStorage.getItem("clicks"), 10);
+if (isNaN(clicks)) {
+  clicks = 0; // if nothing was saved, start at 0
+}
+money.textContent = clicks; // show the saved number right away
 
-
-// Load saved clicks from localStorage, or start at 0
-let clicks = Number(localStorage.getItem("clicks")) || 0;
-money_id.innerHTML = clicks;
-
-// Update clicks when div is clicked
-clanker_id.addEventListener("click", function () {
+// --- Manual clicks ---
+clanker.addEventListener("click", () => {
   clicks++;
-  money_id.innerHTML = clicks;
-  localStorage.setItem("clicks", clicks); 
-  
-  
-  
-  // save to localStorage
+  money.textContent = clicks;
+  localStorage.setItem("clicks", clicks); // always save the *current* value
 });
 
-
-clear.addEventListener("click", function(){
-    clicks = 0
-    money_id.innerHTML = 0
-})
-
-
-//____________________
-
-
-
-//code stuff (the clicker)
-
-let autoInterval = null; // holds the timer ID
+// --- Auto clicks every 2 seconds ---
+let autoInterval = null;
 code.addEventListener("click", () => {
-  // Only start if we haven't already started
   if (autoInterval === null) {
     autoInterval = setInterval(() => {
       clicks++;
@@ -44,3 +30,8 @@ code.addEventListener("click", () => {
     }, 2000);
   }
 });
+
+
+
+//button stuff
+
