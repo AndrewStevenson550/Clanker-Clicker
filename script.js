@@ -22,6 +22,14 @@ clanker.addEventListener("click", () => {
 // --- Auto clicks every 2 seconds ---
 let autoInterval = null;
 code.addEventListener("click", () => {
+
+  //checks if there are more than 5 clicks
+  if(clicks >= 5){
+    clicks = clicks - 5;
+    localStorage.setItem("clicks", clicks);
+  }
+
+
   if (autoInterval === null) {
     autoInterval = setInterval(() => {
       clicks++;
