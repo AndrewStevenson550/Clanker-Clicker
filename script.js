@@ -42,4 +42,13 @@ code.addEventListener("click", () => {
 
 
 //button stuff
+clear_button.addEventListener("click", function(){
+  money.innerHTML = 0;
+  clicks = 0;
+  localStorage.setItem("clicks", clicks)
+
+
+
+})
+
 
